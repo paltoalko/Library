@@ -4,9 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e76faa4312.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+    <div class="header">
+        <h2 class="title">Library</h2>
+        <h3 class="subtitle">Your own virtual shelf for read and unread books.</h3>
+        <button id="addbook">Add book</button>
+    </div>
+
+    <div class="main">
+        <div class="cards"></div>
+        <div class="status">
+            <i id="menu" class="fas fa-bars fa-lg"></i>
+            <ul class="menulist hidden">
+                <li class="readpages">PAGES READ 11220</li>
+                <li class="totalpages">TOTAL PAGES 0</li>
+                <li class="readbooks">BOOKS READ 0</li>
+                <li class="totalbooks">TOTAL BOOKS 11</li>
+            </ul>
+            
+        </div>
+        <p class="nobooks">No books in the library. Go and add some!</p>
+    </div>
+
+    <div class="footer">
+        <a href="https://github.com/paltoalko" target="_blank">@martawesolowska</a>
+    </div>
+
+    <div class="bg-modal">
+        <div class="modal-content">
+            <form action="">
+                <div id="close">+</div>
+                <p>Add new book</p>
+                <div class="modal-bar"></div>
+                <div class="error-message">Please fill all fields.</div>
+                <input id="title" type="text" placeholder="Title" minlength="1" maxlength="110">
+                <input id="author" type="text" placeholder="Author" minlength="1" maxlength="25">
+                <input id="pages" placeholder="Pages" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"
+                maxlength = "5"
+                min="1">
+                <p>Have you read the book?</p>
+                <input type="checkbox" name="isread" id="isread">
+                <button class="modal-button" type="button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
 </html>
