@@ -17,16 +17,14 @@
 
     <div class="main">
         <div class="cards"></div>
-        <div class="status">
-            <i id="menu" class="fas fa-bars fa-lg"></i>
-            <ul class="menulist hidden">
-                <li class="readpages">PAGES READ 11220</li>
-                <li class="totalpages">TOTAL PAGES 0</li>
-                <li class="readbooks">BOOKS READ 0</li>
-                <li class="totalbooks">TOTAL BOOKS 11</li>
-            </ul>
-            
-        </div>
+        <div class="menu">
+            <div class="label">Library Info</div>
+            <div class="spacer"></div>
+            <div class="item"><span>Books Read <span class="booksread"></span></span></div>
+            <div class="item"><span>Books Unread <span class="booksunread"></span></span></div>
+            <div class="item"><span>Books Total <span class="bookstotal"></span></span></div>
+            <div id="removeall" class="item"><p class="removeall">Remove All</p></div>
+          </div>
         <p class="nobooks">No books in the library. Go and add some!</p>
     </div>
 
@@ -51,6 +49,16 @@
                 <input type="checkbox" name="isread" id="isread">
                 <button class="modal-button" type="button">Submit</button>
             </form>
+        </div>
+    </div>
+
+    <div class="rem-modal" id="rem-modal">
+        <div class="rem-content">
+            <p>Are you sure you want to remove all the books?</p>
+            <div class="btm-content">
+                <div class="cancel-btn">CANCEL</div>
+                <div class="confirm-btn">CONFIRM</div>
+            </div>
         </div>
     </div>
 
