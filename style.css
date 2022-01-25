@@ -49,6 +49,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin: 1rem;
+	position: relative;
 }
 
 .nobooks {
@@ -285,40 +286,100 @@ body {
 	cursor: pointer;
 }
 
-.status {
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-	top: 2%;
-	right: 1%;
-	height: 100%;
-}
-
-.status i {
-	transition: 0.3s;
-	color: #2e3033;
-	transform: rotate(0deg);
-}
-
-.menulist {
-	pointer-events: none;
-	list-style: none;
-}
-
-li {
-	font-size: 2vh;
+.menu {
 	text-transform: uppercase;
-	letter-spacing: 2px;
-	padding: 0.75em 0;
-	writing-mode: vertical-lr;
+	color: rgba(255, 255, 255, 0.8);
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
 }
 
-#menu:hover {
-	color: #ffffff;
-	cursor: pointer;
+.label {
+	display: inline-block;
+}
+.spacer {
+	display: inline-block;
+	width: 80px;
+	margin-left: 15px;
+	margin-right: 15px;
+	vertical-align: middle;
+	border-bottom: 1px solid #ffffff;
+	height: 1px;
 }
 
-.hidden {
-	visibility: hidden;
+.item {
+	position: relative;
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.removeall {
+	cursor: pointer;
+	color: rgb(224, 8, 8);
+}
+
+.rem-modal {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	top: 0px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.rem-content {
+	background-color: #2e3033;
+	width: 600px;
+	height: 80px;
+	position: fixed;
+	top: 40%;
+	border-radius: 10px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.rem-content p {
+	font-size: 1.5rem;
+	text-align: center;
+	font-weight: 300;
+	height: 40px;
+}
+
+.btm-content {
+	display: flex;
+	text-align: center;
+	height: 50%;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.cancel-btn {
+	font-weight: 400;
+	cursor: pointer;
+	border: 2px solid green;
+	width: 200px;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: green;
+}
+
+.confirm-btn {
+	color: white;
+	font-weight: 400;
+	cursor: pointer;
+	width: 200px;
+	border-radius: 10px;
+	padding: 5px;
+	background-color: rgb(224, 8, 8);
 }

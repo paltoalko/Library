@@ -1,17 +1,3 @@
-// modal popup close/open
-document.getElementById('addbook').addEventListener('click', function () {
-    document.querySelector(".bg-modal").style.display = "flex"
-})
-
-document.getElementById('close').addEventListener('click', function () {
-    document.querySelector(".bg-modal").style.display = "none"
-})
-
-// menu rotate
-
-
-
-//submit button 
 
 const title = document.querySelector("#title")
 const author = document.querySelector("#author")
@@ -108,6 +94,7 @@ function ifEmpty () {
         } 
     resetModal ();
     checkEmpty ();
+    libraryInfo ();
     }
 
 }
@@ -212,11 +199,13 @@ function displayBook() {
                readelement.setAttribute('id', 'read-button-modified')
                myLibrary[i].status = true
                localStorage.setItem('books', JSON.stringify(myLibrary));
+               libraryInfo ()
 
            } else if (myLibrary[i].status === true){
                readelement.setAttribute('id', 'read-button')
                myLibrary[i].status = false
                localStorage.setItem('books', JSON.stringify(myLibrary));
+               libraryInfo();
            }
         })
 
@@ -225,8 +214,11 @@ function displayBook() {
             myLibrary.splice(bookCard, 1);
             localStorage.setItem('books', JSON.stringify(myLibrary));
             checkEmpty ();
+            libraryInfo ();
     
           });
+
+        
 }}
 
 function addBookToLibrary(title, author, pages, status) {
@@ -243,5 +235,71 @@ function checkEmpty () {
         document.querySelector('.nobooks').style.display = "block";
     }
 }
+
+function deleteAll () {
+    const bookCards = document.querySelector('.cards');
+    bookCards.textContent = '';
+    myLibrary = [];
+    checkEmpty();
+    localStorage.setItem('books', JSON.stringify(myLibrary));
+    libraryInfo ();
+    
+}
+
+function modals () {
+    document.getElementById('addbook').addEventListener('click', function () {
+        document.querySelector(".bg-modal").style.display = "flex"
+    })
+    document.getElementById('close').addEventListener('click', function () {
+        document.querySelector(".bg-modal").style.display = "none"
+    })
+    document.querySelector('.removeall').addEventListener('click', function () {
+        document.querySelector(".rem-modal").style.display = "flex"
+        console.log("hello");
+        
+    })
+
+    document.querySelector(".cancel-btn").addEventListener('click' , function () {
+        document.querySelector(".rem-modal").style.display = "none"
+    })
+    window.addEventListener('click' , function() {
+        if (document.querySelector(".rem-modal").style.display == "flex") {
+            document.querySelector(".rem-modal").style.display = "none"
+        }
+    }, true)
+
+    document.querySelector(".confirm-btn").addEventListener('click', function () {
+        deleteAll ();
+    })
+
+}  
+
+function libraryInfo () {
+    const booksRead = document.querySelector(".booksread")
+    const booksUnread = document.querySelector(".booksunread")
+    const booksTotal = document.querySelector(".bookstotal")
+
+    let readCounter = 0;
+    let unreadCounter = 0;
+
+    booksRead.textContent = 0;
+    booksUnread.textContent = 0;
+    for (let i = 0; i < myLibrary.length; i += 1) {
+      if (myLibrary[i].status === true) {
+        readCounter += 1;
+        booksRead.textContent = readCounter;
+      } else if (myLibrary[i].status === false) {
+        unreadCounter += 1;
+        booksUnread.textContent = unreadCounter;
+      }
+    }
+    booksTotal.textContent = myLibrary.length;
+
+
+}
+
+
 displayBook();
 checkEmpty ();
+modals ();
+libraryInfo ();
